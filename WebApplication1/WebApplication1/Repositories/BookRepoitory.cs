@@ -58,7 +58,7 @@ public class BookRepoitory : IBookRepository
         using SqlCommand command2 = new SqlCommand();
         command2.Connection = connection;
         command2.CommandText = "INSERT INTO books_authors (FK_book, FK_author) values (@books_pk, @authors_PK);";
-        command2.Parameters.AddWithValue("@books_PK", pk);
+        command2.Parameters.AddWithValue("@books_PK", pk); //tu powinienem wyciągnąć id book z klucza który nadała baza za pomocą nazwy i wszystko pójdzie
         command2.Parameters.AddWithValue("@authors_PK", authorId);
         command2.ExecuteNonQuery();
     }

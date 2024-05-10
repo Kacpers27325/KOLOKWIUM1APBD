@@ -26,7 +26,7 @@ public class BookController : ControllerBase
     {
         if (!await _bookRepository.DoesBookExist(pk))
         {
-            _bookRepository.AddBook(title, idauthor);
+            _bookRepository.AddBook(pk, title, idauthor);
             return Ok();
         }
         else
