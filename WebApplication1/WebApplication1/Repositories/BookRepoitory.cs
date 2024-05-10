@@ -12,26 +12,32 @@ public class BookRepoitory : IBookRepository
         _configuration = configuration;
     }
     
-    public IEnumerable <Author> ShowAuthors(int idBook)
+    public IEnumerable<Author> ShowAuthors(int idBook)
     {
-        using SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default"));
-        connection.Open();
-        using SqlCommand command = new SqlCommand();
-        command.Connection = connection;
-        command.CommandText = "SELECT * FROM Authors JOIN books_authors ON authors.PK = books_authors.FK_author WHERE books_authors.FK_book = @idBook";
-        command.Parameters.AddWithValue("@idBook", idBook);
-        var reader = command.ExecuteReader();
-        var authors = new List<Author>();
-        while (reader.Read())
+        using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default")))
         {
-            authors.Add(new Author()
+            connection.Open();
+            using (SqlCommand command = new SqlCommand())
             {
-                id = reader.GetInt32(reader.GetOrdinal("PK")),
-                firstName = reader.GetString(reader.GetOrdinal("first_na")),
-                lastName = reader.GetString(reader.GetOrdinal("last_na"))
-            });
+                command.Connection = connection;
+                command.CommandText = "SELECT * FROM Authors JOIN books_authors ON authors.PK = books_authors.FK_author WHERE books_authors.FK_book = @idBook";
+                command.Parameters.AddWithValue("@idBook", idBook);
+                var authors = new List<Author>();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        authors.Add(new Author()
+                        {
+                            id = reader.GetInt32(reader.GetOrdinal("PK")), // Assuming "PK" is the primary key column
+                            firstName = reader.GetString(reader.GetOrdinal("first_name")), // Corrected column name
+                            lastName = reader.GetString(reader.GetOrdinal("last_name")) // Corrected column name
+                        });
+                    }
+                }
+                return authors;
+            }
         }
-        return authors;
     }
     
     
