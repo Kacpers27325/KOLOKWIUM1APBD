@@ -54,7 +54,7 @@ public class BookRepoitory : IBookRepository
         command.Parameters.AddWithValue("@PK", pk);
         command.Parameters.AddWithValue("@title", title);
         command.ExecuteNonQuery();
-        
+        var query = "SELECT PK from Books where title = @title";
         using SqlCommand command2 = new SqlCommand();
         command2.Connection = connection;
         command2.CommandText = "INSERT INTO books_authors (FK_book, FK_author) values (@books_pk, @authors_PK);";
