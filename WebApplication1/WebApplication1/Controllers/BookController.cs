@@ -22,9 +22,19 @@ public class BookController : ControllerBase
         return Ok(authors);
     }
     [HttpPost]
-    public IActionResult AddBook(int id, string title, int idauthor)
+    public async Task<IActionResult> AddBook(int pk, string title, int idauthor)
     {
-        _bookRepository.AddBook(id, title,idauthor);
-        return Created("/api/animals", null);
+        if (!await _bookRepository.DoesBookExist(pk))
+        {
+            _bookRepository.AddBook(title, idauthor);
+            return Ok();
+        }
+        else
+        {
+            return NotFound();
+        }
     }
+    
+    
+    
 }

@@ -29,9 +29,9 @@ public class BookRepoitory : IBookRepository
                     {
                         authors.Add(new Author()
                         {
-                            id = reader.GetInt32(reader.GetOrdinal("PK")), // Assuming "PK" is the primary key column
-                            firstName = reader.GetString(reader.GetOrdinal("first_name")), // Corrected column name
-                            lastName = reader.GetString(reader.GetOrdinal("last_name")) // Corrected column name
+                            id = reader.GetInt32(reader.GetOrdinal("PK")),
+                            firstName = reader.GetString(reader.GetOrdinal("first_name")),
+                            lastName = reader.GetString(reader.GetOrdinal("last_name"))
                         });
                     }
                 }
@@ -62,5 +62,23 @@ public class BookRepoitory : IBookRepository
         command2.Parameters.AddWithValue("@authors_PK", authorId);
         command2.ExecuteNonQuery();
     }
+    
+    public async Task<bool> DoesBookExist(int id)
+    {
+        var query = "SELECT 1 from Books where PK=@ID";
+        using SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default"));
+        using SqlCommand command = new SqlCommand();
+
+        command.Connection = connection;
+        command.CommandText = query;
+        command.Parameters.AddWithValue("@ID", id);
+
+        await connection.OpenAsync();
+
+        var res = await command.ExecuteScalarAsync();
+        
+        return res is not null;
+    }
+    
     
 }
