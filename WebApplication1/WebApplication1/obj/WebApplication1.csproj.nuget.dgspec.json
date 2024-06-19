@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s27325\\Desktop\\KOLOKWIUM\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\kacpe\\Desktop\\Kolokwium 1 APBD gr B\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s27325\\Desktop\\KOLOKWIUM\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\kacpe\\Desktop\\Kolokwium 1 APBD gr B\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s27325\\Desktop\\KOLOKWIUM\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\kacpe\\Desktop\\Kolokwium 1 APBD gr B\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\s27325\\Desktop\\KOLOKWIUM\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\s27325\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s27325\\Desktop\\KOLOKWIUM\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\obj\\",
+        "projectPath": "C:\\Users\\kacpe\\Desktop\\Kolokwium 1 APBD gr B\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\kacpe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kacpe\\Desktop\\Kolokwium 1 APBD gr B\\KOLOKWIUM1APBD\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s27325\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kacpe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +35,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

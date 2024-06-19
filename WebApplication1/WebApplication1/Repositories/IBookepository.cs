@@ -1,11 +1,11 @@
+using WebApplication1.DTOs;
 using WebApplication1.Models;
 
 namespace WebApplication1.Repositories;
 
 public interface IBookRepository
 {
-    IEnumerable<Author> ShowAuthors(int idBook);
-    void AddBook(int id, string title, int authorId);
-    
-    Task<bool> DoesBookExist(int id);
+    Task<(string Title, List<Author> Authors)> ShowAuthorsAsync(int idBook);
+    Task<int> AddBookAsync(BookDto bookDto);
+    Task<bool> DoesBookExistAsync(int id);
 }
