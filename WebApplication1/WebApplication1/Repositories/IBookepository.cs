@@ -5,7 +5,7 @@ namespace WebApplication1.Repositories;
 
 public interface IBookRepository
 {
-    Task<(string Title, List<Author> Authors)> ShowAuthorsAsync(int idBook);
-    Task<int> AddBookAsync(BookDto bookDto);
+    Task<BookAuthorsDto> GetBookAuthorsAsync(int idBook);
+    Task<BookAuthorsDto> AddBookAsync(BookDto bookDto);
     Task<bool> DoesBookExistAsync(int id);
 }

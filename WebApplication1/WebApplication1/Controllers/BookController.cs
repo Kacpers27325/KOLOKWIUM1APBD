@@ -19,36 +19,19 @@ public class BookController : ControllerBase
     [HttpGet("{id}/authors")]
     public async Task<IActionResult> GetAuthors(int id)
     {
-        if (!await _bookRepository.DoesBookExistAsync(id))
+        var bookAuthors = await _bookRepository.GetBookAuthorsAsync(id);
+        if (bookAuthors == null)
         {
             return NotFound();
         }
 
-        var (title, authors) = await _bookRepository.ShowAuthorsAsync(id);
-        var response = new 
-        {
-            Id = id,
-            Title = title,
-            Authors = authors.Select(a => new AuthorDto 
-            {
-                FirstName = a.firstName,
-                LastName = a.lastName
-            })
-        };
-
-        return Ok(response);
+        return Ok(bookAuthors);
     }
 
     [HttpPost]
     public async Task<IActionResult> AddBook([FromBody] BookDto bookDto)
     {
-        var bookId = await _bookRepository.AddBookAsync(bookDto);
-        var response = new 
-        {
-            Id = bookId,
-            Title = bookDto.Title,
-            Authors = bookDto.Authors
-        };
-        return CreatedAtAction(nameof(GetAuthors), new { id = bookId }, response);
+        var newBook = await _bookRepository.AddBookAsync(bookDto);
+        return CreatedAtAction(nameof(GetAuthors), new { id = newBook.Id }, newBook);
     }
 }
